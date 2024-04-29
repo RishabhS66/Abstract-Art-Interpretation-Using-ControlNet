@@ -22,11 +22,10 @@ from pytorch_lightning import seed_everything
 from annotator.util import resize_image, HWC3
 from cldm.model import create_model, load_state_dict
 from cldm.ddim_hacked import DDIMSampler
-#from dataset import *
 
 
 A_PROMPT_DEFAULT = "best quality, extremely detailed"
-N_PROMPT_DEFAULT = "cropped, worst quality, low quality"
+N_PROMPT_DEFAULT = "longbody, lowres, bad anatomy, bad hands, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality"
 
 
 def run_sampler(
@@ -113,23 +112,24 @@ def run_sampler(
 
         return results
 
-if __name__ == '__main__':
-    model = create_model('./models/cldm_v15.yaml').cpu()
-    model.load_state_dict(load_state_dict('./models/control_sd15_ini7_10__myds.pth', location='cpu'))
-
-    image_pil = Image.open('./guitar2_p.png')
-
-    # Convert the image to a NumPy array
+def run_experiments(model, file_path, output_name, prompt=''):
+    image_pil = Image.open(file_path)
     image_np = np.array(image_pil)
-
-    prompt = 'man playing guitar'
-
     results = run_sampler(model, image_np, prompt)
     image = Image.fromarray(results[0])
-    
-    # Save the image
-    image.save('infer_image_g3.png')
-    print("Image saved successfully:", 'infer_image_g3.png')
+    image.save(output_name)
+    print(f'Image saved successfully: {output_name}')
+
+if __name__ == '__main__':
+    model = create_model('./models/cldm_v15.yaml').cpu()
+    model.load_state_dict(load_state_dict('./models/control_sd15_ini9_10__myds.pth', location='cpu'))
+
+    run_experiments(model, 'training/geometricShapes14k/source/327.png', 'infer_image_fl10.png', 'blue flames')
+    run_experiments(model, 'training/geometricShapes14k/source/327.png', 'infer_image_fl10_np.png', '')
+    run_experiments(model, 'training/geometricShapes14k/source/564.png', 'infer_image_b10.png', 'hole in the bark of a tree')
+    run_experiments(model, 'training/geometricShapes14k/source/564.png', 'infer_image_b10_np.png', '')
+    run_experiments(model, 'guitar2_p.png', 'infer_image_g10.png', 'man with a  guitar')
+    run_experiments(model, 'guitar2_p.png', 'infer_image_g10_np.png', '')
 
 
 
