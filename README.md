@@ -1,5 +1,4 @@
-# Controlling-Stable-Diffusion
-ControlNet training with custom control images
+# Abstract Art Interpretation Using ControlNet
 
 ### Training Dataset
 
