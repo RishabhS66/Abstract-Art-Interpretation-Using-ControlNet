@@ -47,7 +47,7 @@ class MyDataset(Dataset):
 
 # Configs
 #resume_path = './models/control_sd15_ini.ckpt'
-resume_path ='./models/control_sd15_ini7_10__myds.pth'
+resume_path ='./models/control_sd15_ini9_10__myds.pth'
 batch_size = 2
 logger_freq = 300
 learning_rate = 1e-5
@@ -77,4 +77,4 @@ print("STARTING TRAINING")
 torch.cuda.empty_cache()
 # Train!
 trainer.fit(model, dataloader)
-torch.save(model.state_dict(), './models/control_sd15_ini8_10__myds.pth')
+torch.save(model.state_dict(), './models/control_sd15_ini10_10__myds.pth')
