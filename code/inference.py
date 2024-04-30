@@ -1,6 +1,8 @@
 """
 Author: Gabe Grand
 
+Modified By: Rishabh Srivastava
+
 Tools for running inference of a pretrained ControlNet model.
 Adapted from gradio_scribble2image.py from the original authors.
 
