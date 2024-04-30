@@ -1,3 +1,4 @@
+# Script to perform inference using the ControlNet model. This script is used to generate images using the ControlNet model. The script loads the ControlNet model and the Stable Diffusion model, and generates an image using the ControlNet model. The generated image is saved to the output.png file.
 from diffusers import StableDiffusionControlNetPipeline, ControlNetModel, UniPCMultistepScheduler
 from diffusers.utils import load_image
 import torch

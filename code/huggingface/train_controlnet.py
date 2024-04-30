@@ -631,8 +631,7 @@ def make_train_dataset(args, tokenizer, accelerator):
                 args.train_data_dir,
                 cache_dir=args.cache_dir,
             )
-        # See more about loading custom images at
-        # https://huggingface.co/docs/datasets/v2.0.0/en/dataset_script
+        
 
     # Preprocessing the datasets.
     # We need to tokenize inputs and targets.
@@ -826,7 +825,6 @@ def main(args):
         logger.info("Initializing controlnet weights from unet")
         controlnet = ControlNetModel.from_unet(unet)
 
-    # Taken from [Sayak Paul's Diffusers PR #6511](https://github.com/huggingface/diffusers/pull/6511/files)
     def unwrap_model(model):
         model = accelerator.unwrap_model(model)
         model = model._orig_mod if is_compiled_module(model) else model
@@ -897,7 +895,6 @@ def main(args):
         )
 
     # Enable TF32 for faster training on Ampere GPUs,
-    # cf https://pytorch.org/docs/stable/notes/cuda.html#tensorfloat-32-tf32-on-ampere-devices
     if args.allow_tf32:
         torch.backends.cuda.matmul.allow_tf32 = True
 
