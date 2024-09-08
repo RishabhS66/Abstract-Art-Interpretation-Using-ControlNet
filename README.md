@@ -1,12 +1,14 @@
 # Abstract Art Interpretation Using ControlNet
 
+[![arXiv](https://img.shields.io/badge/arXiv-2408.13287-b31b1b.svg)](https://arxiv.org/abs/2408.13287)
+
 ```Authors: Rishabh Srivastava (rs4489@columbia.edu), Addrish Roy (ar4613@columbia.edu)```
 
 ## 1. Introduction
 The project demonstrates the potential of integrating abstract art interpretation with text-to-image synthesis using ControlNet. By introducing geometric primitives as conditions, we enable finer control over image generation, paving the way for more nuanced artistic expression.
 By leveraging ControlNet, which integrates diverse conditioning inputs with Stable Diffusion, we introduce a novel condition crafted from geometric primitives to guide image generation.
 
-A detailed analysis is present in the pdf file [Report.pdf](Report.pdf).
+A detailed analysis is presented in this [arxiv paper](https://arxiv.org/pdf/2408.13287).
 
 ## 2. Methodology
 
